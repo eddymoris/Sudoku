@@ -148,12 +148,10 @@ public class Sudoku {
                 col = sudoku.identificarColumnasIguales(octProvisional, novProvisional, 2);
             }
         }
-        System.out.println("((" + col + "))\n");
         
         if (col >= 0) {
             sudoku.eliminarDobleCoincidenciaFilasCon3x3(octProvisional, septimoCuadro, col); 
         }
-        
         
         octavoCuadro   = sudoku.numerosExactos(octProvisional, septimoCuadro, octavoCuadro, 0);
         octavoCuadro   = sudoku.numerosExactos(octProvisional, septimoCuadro, octavoCuadro, 1);
@@ -177,7 +175,6 @@ public class Sudoku {
             novenoCuadro   = sudoku.numerosExactos(novProvisional, septimoCuadro, novenoCuadro, 1);
             novenoCuadro   = sudoku.numerosExactos(novProvisional, septimoCuadro, novenoCuadro, 2);
         }
-        
         
         System.out.println("-- " + sudoku.obtenerNumeroYFila(septimoCuadro, octavoCuadro, novenoCuadro));
         

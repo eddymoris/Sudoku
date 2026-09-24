@@ -176,7 +176,8 @@ public class Sudoku {
             novenoCuadro   = sudoku.numerosExactos(novProvisional, septimoCuadro, novenoCuadro, 2);
         }
         
-        System.out.println("-- " + sudoku.obtenerNumeroYFila(septimoCuadro, octavoCuadro, novenoCuadro));
+        System.out.print("-- " + sudoku.obtenerNumeroYFila(septimoCuadro, octavoCuadro, novenoCuadro));
+        System.out.println("\t-- " + sudoku.obtenerNumeroYFila(septimoCuadro, novenoCuadro, octavoCuadro));
         
         /**********************************************************************
          * Sudoku.

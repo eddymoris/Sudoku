@@ -627,45 +627,53 @@ public class PrimerCuadro {
     
     /**
      *
+     * Comprueba que un número dado no exista en una fila específica de otra matriz.
+     * Retorna falso si lo encuentra y verdadero si no es así.
+     */
+    public boolean comprobarNumeroEnFila(int[][] matriz, int numero, int fila) {
+        for (int j = 0; j < matriz.length; j++) {
+            if (matriz[fila][j] == numero) {
+                return false;
+            }
+        }
+        
+        return true;
+    }
+    /**********************************************************************************/
+    
+    
+    /**
+     *
      * Comprueba todas las filas de una matriz.
      * Retorna el número y la fila donde debe ser ubicado.
      */
     public ArrayList<Integer> obtenerNumeroYFila(int[][] matriz, int[][] matriz1, int[][] matriz2) {
         ArrayList<Integer> filaColumna = new ArrayList<>();
         ArrayList<Integer> numeroFila  = new ArrayList<>();
+        ArrayList<Integer> resultado   = new ArrayList<>();
         int num = -1;
 
         for (int i = 0; i < matriz1.length; i++) {
+            ArrayList<Integer> lista   = new ArrayList<Integer>() {{ add(0); add(1); add(2); }};
             numeroFila = encontrarNumeroFila(matriz1, i);
+            
             if (!numeroFila.isEmpty()) {
                 num = numeroFila.getFirst();
-            } else {
-                numeroFila.clear();
-//                System.out.println("¡No hay elementos! (8)");
-                numeroFila = encontrarNumeroFila(matriz2, i);
-                if (!numeroFila.isEmpty()) {
-                    num = numeroFila.getFirst();
-//                    System.out.println("¡No hay elementos! (9)");
-                } else {
-                    System.out.println("¡No hay elementos en ninguno de los dos cuadros!");
-                }
-            }
-//            numeroFila.clear();
-            if (num > 0) {
+                
                 filaColumna = encontrarFilaColumna(matriz, num);
                 if (!filaColumna.isEmpty()) {
                     lista.remove(new Integer(filaColumna.getFirst()));
                     lista.remove(new Integer(i));
-                    System.out.println("++ " + lista);
-                    numeroFila.add(num);
-                    numeroFila.add(lista.getFirst());
+                    
+                    if (comprobarNumeroEnFila(matriz2, num, lista.getFirst())) {
+                        resultado.add(num);
+                        resultado.add(lista.getFirst());
+                    }
                 }
-                
-                return numeroFila;
             }
         }
         
-        return numeroFila;
+        return resultado;
     }
     /**********************************************************************************/
     
@@ -849,9 +857,6 @@ public class PrimerCuadro {
     }
     /**********************************************************************************/
 }
-// Una misma fila en el séptimo cuadro puede repercutir en dos columnas distintas del 8vo. y 9no. cuadros.
-// Hacer una función para gestionar doble coincidencia en filas del 7mo. cuadro aunque no haya columnas 3x3.
-
 // En el octavo y noveno cuadros, puede ser que no haya ningún número después de ejecutar la función numerosExactos().
 
 // Puede haber 3x3x3 en el octavo y noveno cuadro.

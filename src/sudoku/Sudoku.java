@@ -29,6 +29,8 @@ public class Sudoku {
         int[][] novenoCuadro                = new int[3][3];
         
         ArrayList<Integer> lista            = new ArrayList<>();
+        ArrayList<Integer> listaOctavo      = new ArrayList<>();
+        ArrayList<Integer> listaNoveno      = new ArrayList<>();
         ArrayList<Integer> listaDesordenada = new ArrayList<>();
         
         PrimerCuadro sudoku = new PrimerCuadro();
@@ -176,8 +178,14 @@ public class Sudoku {
             novenoCuadro   = sudoku.numerosExactos(novProvisional, septimoCuadro, novenoCuadro, 2);
         }
         
-        System.out.print("-- " + sudoku.obtenerNumeroYFila(septimoCuadro, octavoCuadro, novenoCuadro));
-        System.out.println("\t-- " + sudoku.obtenerNumeroYFila(septimoCuadro, novenoCuadro, octavoCuadro));
+        listaOctavo = sudoku.obtenerNumeroYFila(septimoCuadro, octavoCuadro, novenoCuadro);
+        System.out.print("-- " + listaOctavo);
+        
+        listaNoveno = sudoku.obtenerNumeroYFila(septimoCuadro, novenoCuadro, octavoCuadro);
+        System.out.println("\t-- " + listaNoveno);
+        
+        sudoku.encontrarColumnaSinNumero(novenoCuadro, tercerCuadro, sextoCuadro, listaOctavo);
+        sudoku.encontrarColumnaSinNumero(octavoCuadro, segundoCuadro, quintoCuadro, listaNoveno);
         
         /**********************************************************************
          * Sudoku.

@@ -627,23 +627,6 @@ public class PrimerCuadro {
     
     /**
      *
-     * Comprueba que un número dado no exista en una fila específica de otra matriz.
-     * Retorna falso si lo encuentra y verdadero si no es así.
-     */
-    public boolean comprobarNumeroEnFila(int[][] matriz, int numero, int fila) {
-        for (int j = 0; j < matriz.length; j++) {
-            if (matriz[fila][j] == numero) {
-                return false;
-            }
-        }
-        
-        return true;
-    }
-    /**********************************************************************************/
-    
-    
-    /**
-     *
      * Comprueba todas las filas de una matriz.
      * Retorna el número y la fila donde debe ser ubicado.
      */
@@ -674,6 +657,50 @@ public class PrimerCuadro {
         }
         
         return resultado;
+    }
+    /**********************************************************************************/
+    
+    
+     /**
+     *
+     * Identifica en que columna de una matriz no existe un número dado.
+     */
+    public void encontrarColumnaSinNumero(int[][] matriz, int[][] matriz1, int[][] matriz2, ArrayList<Integer> lista) {
+        int igual = 0;
+        int inc   = 0;
+        
+        for (int rep = 0; rep < lista.size()/2; rep++) {
+            for (int i = 0; i < matriz1.length; i++) {
+                for (int j = 0; j < matriz2.length; j++) {
+                    if (matriz1[j][i] == lista.get(rep+inc) || matriz2[j][i] == lista.get(rep+inc)) {
+                        igual++;
+                    }
+                    
+                    if (igual == 0 && j == 2) {
+                        matriz[lista.get(rep+inc+1)][i] = lista.get(rep+inc);
+                    }
+                }
+                igual = 0;
+            }
+            inc++;
+        }
+    }
+    /**********************************************************************************/
+    
+    
+    /**
+     *
+     * Comprueba que un número dado no exista en una fila específica de otra matriz.
+     * Retorna falso si lo encuentra y verdadero si no es así.
+     */
+    public boolean comprobarNumeroEnFila(int[][] matriz, int numero, int fila) {
+        for (int j = 0; j < matriz.length; j++) {
+            if (matriz[fila][j] == numero) {
+                return false;
+            }
+        }
+        
+        return true;
     }
     /**********************************************************************************/
     
@@ -857,6 +884,6 @@ public class PrimerCuadro {
     }
     /**********************************************************************************/
 }
-// En el octavo y noveno cuadros, puede ser que no haya ningún número después de ejecutar la función numerosExactos().
 
+// En el octavo y noveno cuadros, puede ser que no haya ningún número después de ejecutar la función numerosExactos().
 // Puede haber 3x3x3 en el octavo y noveno cuadro.

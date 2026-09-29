@@ -139,10 +139,6 @@ public class Sudoku {
         septimoCuadro  = sudoku.eliminarCoincidenciasFilas(novProvisional, septimoCuadro, 2);
         /**********************************************************************/
         
-//        sudoku.presentarMatriz(octProvisional);
-//        sudoku.presentarMatriz(novProvisional);
-//        sudoku.presentarMatriz(septimoCuadro);
-        
         int col = sudoku.identificarColumnasIguales(octProvisional, novProvisional, 0);
         if (col < 0) {
             col = sudoku.identificarColumnasIguales(octProvisional, novProvisional, 1);
@@ -164,9 +160,6 @@ public class Sudoku {
         novenoCuadro   = sudoku.numerosExactos(novProvisional, septimoCuadro, novenoCuadro, 2);
         
         if (sudoku.eliminarDobleCoincidenciaFilasSin3x3(septimoCuadro, octavoCuadro, novenoCuadro)) {
-//            sudoku.presentarMatriz(octavoCuadro);
-//            sudoku.presentarMatriz(novenoCuadro);
-//            sudoku.presentarMatriz(septimoCuadro);
             octavoCuadro   = sudoku.generarSudoku(octavoCuadro);
             octavoCuadro   = sudoku.numerosExactos(octProvisional, septimoCuadro, octavoCuadro, 0);
             octavoCuadro   = sudoku.numerosExactos(octProvisional, septimoCuadro, octavoCuadro, 1);
@@ -179,14 +172,19 @@ public class Sudoku {
         }
         
         listaOctavo = sudoku.obtenerNumeroYFila(septimoCuadro, octavoCuadro, novenoCuadro);
-        System.out.print("-- " + listaOctavo);
+//        System.out.print("-- " + listaOctavo);
         
         listaNoveno = sudoku.obtenerNumeroYFila(septimoCuadro, novenoCuadro, octavoCuadro);
-        System.out.println("\t-- " + listaNoveno);
+//        System.out.println("\t-- " + listaNoveno);
         
         sudoku.encontrarColumnaSinNumero(novenoCuadro, tercerCuadro, sextoCuadro, listaOctavo);
         sudoku.encontrarColumnaSinNumero(octavoCuadro, segundoCuadro, quintoCuadro, listaNoveno);
         
+        sudoku.presentarMatriz(octProvisional);
+        sudoku.presentarMatriz(novProvisional);
+        
+        sudoku.identificarColumnasConNumeros(septimoCuadro, octProvisional, octavoCuadro);
+                
         /**********************************************************************
          * Sudoku.
          **********************************************************************/

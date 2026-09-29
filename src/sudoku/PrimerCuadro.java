@@ -661,6 +661,51 @@ public class PrimerCuadro {
     /**********************************************************************************/
     
     
+    /**
+     *
+     * Identifica si hay coincidencia 3x3 en columnas de dos matrices diferentes.
+     */
+    public int identificarColumnasConNumeros(int[][] matriz, int[][] matrizCol1, int[][] matrizCol2) {
+        int igual = 0;
+        int repet = 0;
+        int posic = -1;
+        int num   = 0;
+        
+        for (int rep = 0; rep < matrizCol1.length; rep++) {
+            for (int i = 0; i < matrizCol1.length; i++) {
+                for (int j = 0; j < matrizCol2.length; j++) {
+                    if (matrizCol2[j][rep] == 0) {
+                        igual++;
+                        posic = j;
+                    }
+                    System.out.println("[" + i + "][" + rep + "]= " + matrizCol1[i][rep] + "\t[" + j + "][" + rep + "]= " + matrizCol2[j][rep]);
+                    if (matrizCol1[i][rep] == matrizCol2[j][rep]) {
+                        repet++;
+                        
+                    }
+                }
+                
+                // Rellena el único espacio vacío en la columna con el único número faltante.
+                if (igual == 1 && repet == 0) { matrizCol2[posic][rep] = matrizCol1[i][rep]; }
+                // Busca, por coincidencia, si es posbile colocar los dos números faltantes en la columna.
+                if (igual == 2 && repet == 1) { 
+                    if (comprobarNumeroEnFila(matriz, matrizCol1[i][rep], posic)) {
+                        System.out.println("++ " + posic + " ++ " + matrizCol1[i][rep]);
+                    }
+                }
+                // Salta a la siguiente columna si no encuentra un número en la misma.
+                if (igual == 3) { break; }
+                igual = 0;
+                repet = 0;
+            }
+            
+        }
+        
+        return posic;
+    }
+    /**********************************************************************************/
+    
+    
      /**
      *
      * Identifica en que columna de una matriz no existe un número dado.

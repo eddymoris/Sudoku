@@ -678,7 +678,7 @@ public class PrimerCuadro {
                         igual++;
                         posic = j;
                     }
-                    System.out.println("[" + i + "][" + rep + "]= " + matrizCol1[i][rep] + "\t[" + j + "][" + rep + "]= " + matrizCol2[j][rep]);
+//                    System.out.println("[" + i + "][" + rep + "]= " + matrizCol1[i][rep] + "\t[" + j + "][" + rep + "]= " + matrizCol2[j][rep]);
                     if (matrizCol1[i][rep] == matrizCol2[j][rep]) {
                         repet++;
                         

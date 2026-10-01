@@ -180,10 +180,13 @@ public class Sudoku {
         sudoku.encontrarColumnaSinNumero(novenoCuadro, tercerCuadro, sextoCuadro, listaOctavo);
         sudoku.encontrarColumnaSinNumero(octavoCuadro, segundoCuadro, quintoCuadro, listaNoveno);
         
-        sudoku.presentarMatriz(octProvisional);
-        sudoku.presentarMatriz(novProvisional);
+//        sudoku.presentarMatriz(octProvisional);
+//        sudoku.presentarMatriz(novProvisional);
+//        sudoku.presentarMatriz(octavoCuadro);
+//        sudoku.presentarMatriz(novenoCuadro);
         
         sudoku.identificarColumnasConNumeros(septimoCuadro, octProvisional, octavoCuadro);
+        sudoku.identificarColumnasConNumeros(septimoCuadro, novProvisional, novenoCuadro);
                 
         /**********************************************************************
          * Sudoku.
